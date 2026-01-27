@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUMEN | Seguimiento</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg-main:#0b0c0f;
+  --accent:#cfa85f;
+  --text-main:#fff;
+  --text-muted:#b3b3b3;
+  --border-soft:rgba(255,255,255,.08);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(180deg, #0b0c0f, #090a0d);
+  color: #fff;
+}
+
+
+/* HEADER */
+/* ===== HEADER ===== */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 76px;
+  padding: 20px 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10,11,14,.75);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  z-index: 1000;
+}
+
+/* BOTÓN 3 PUNTOS */
+.menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+
+.menu-toggle .dot {
+  width: 6px;
+  height: 6px;
+  background: #cfa85f;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+/* ===== MENÚ OVERLAY ===== */
+.menu {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(8,9,12,.97),
+    rgba(5,6,8,.98)
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-110%);
+  transition: transform .6s cubic-bezier(.77,0,.18,1);
+  z-index: 999;
+}
+
+.menu.active {
+  transform: translateY(0);
+}
+
+/* BOTÓN CERRAR */
+.menu-close {
+  position: fixed;
+  top: 28px;
+  right: 36px;
+  background: none;
+  border: none;
+  font-size: 34px;
+  color: #cfa85f;
+  cursor: pointer;
+}
+
+/* LINKS */
+.menu ul {
+  list-style: none;
+  text-align: center;
+}
+
+.menu ul li {
+  margin: 26px 0;
+}
+
+.menu ul li a {
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #e5e5e5;
+  transition: color .3s, letter-spacing .3s;
+}
+
+.menu ul li a:hover {
+  color: #cfa85f;
+  letter-spacing: 3px;
+}
+
+/* BLOQUEAR SCROLL */
+body.menu-open {
+  overflow: hidden;
+}
+
+
+.logo{
+  font-size:1.5rem;
+  font-weight:700;
+  letter-spacing:4px;
+  color:var(--accent);
+}
+
+/* CONTENIDO */
+.tracking-section{
+  padding:140px 32px;
+  display:flex;
+  justify-content:center;
+}
+
+.tracking-box{
+  max-width:460px;
+  width:100%;
+  text-align:center;
+}
+
+.tracking-box h1{
+  font-size:2.2rem;
+  margin-bottom:14px;
+}
+
+.tracking-box p{
+  color:var(--text-muted);
+  margin-bottom:32px;
+}
+
+.tracking-box form{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.tracking-box input{
+  padding:16px 18px;
+  border-radius:14px;
+  border:1px solid var(--border-soft);
+  background:#0b0c0f;
+  color:#fff;
+  font-size:.95rem;
+}
+
+.tracking-box input::placeholder{
+  color:#777;
+}
+
+.tracking-box button{
+  margin-top:12px;
+  padding:16px;
+  border:none;
+  border-radius:999px;
+  background:linear-gradient(135deg,#e0b76a,#cfa85f);
+  color:#000;
+  font-weight:600;
+  cursor:pointer;
+}
+
+
+ footer {
+  margin-top: auto;
+  background: #07080b;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 60px 32px;
+  text-align: center;
+}
+
+
+    .footer-content {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    footer p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    
+</style>
+</head>
+
+<body>
+  <!-- ====== HEADER ====== -->
+<header class="header">
+  <div class="logo">LUMEN</div>
+
+  <button class="menu-toggle" aria-label="Abrir menú">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </button>
+</header>
+
+<nav class="menu">
+  <button class="menu-close" aria-label="Cerrar menú">&times;</button>
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="producto.html">Producto</a></li>
+    <li><a href="seguimiento.html">Seguimiento</a></li>
+    <li><a href="index.html#pasos">¿Cómo comprar?</a></li>
+  </ul>
+</nav>
+
+<section class="tracking-section">
+  <div class="tracking-box">
+    <h1>Seguimiento de pedido</h1>
+    <p>
+      Ingresá tu código de seguimiento que te mandamos por whatsapp cuando despachamos el envio.  
+
+    </p>
+<form 
+  action="https://www.correoargentino.com.ar/formularios/ondnc"
+  method="POST"
+>
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_subject" value="Consulta de seguimiento LUMEN">
+
+  <input
+    type="text"
+    name="Código de seguimiento"
+    placeholder="Ej: 382q4d21"
+    required
+  >
+
+  <button type="submit">Consultar seguimiento</button>
+</form>
+
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 LUMEN · Iluminación exterior</p>
+</footer>
+
+<script>
+const menuToggle = document.querySelector('.menu-toggle');
+const menu = document.querySelector('.menu');
+const menuClose = document.querySelector('.menu-close');
+
+function toggleMenu() {
+  menu.classList.toggle('active');
+  document.body.classList.toggle('menu-open');
+}
+
+menuToggle.addEventListener('click', toggleMenu);
+menuClose.addEventListener('click', toggleMenu);
+
+// cerrar al tocar un link
+document.querySelectorAll('.menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    menu.classList.remove('active');
+    document.body.classList.remove('menu-open');
+  });
+});
+</script>
+
+ 
+</body>
+</html>

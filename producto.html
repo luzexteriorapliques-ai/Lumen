@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUMEN | Producto</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg-main:#0b0c0f;
+  --accent:#cfa85f;
+  --accent-soft:rgba(207,168,95,.15);
+  --text-main:#fff;
+  --text-muted:#b3b3b3;
+  --border-soft:rgba(255,255,255,.08);
+  --radius:18px;
+  --header-height:76px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:linear-gradient(180deg,#0b0c0f,#090a0d);
+  color:var(--text-main);
+}
+
+a{text-decoration:none;color:inherit}
+
+/* HEADER */
+.header{
+  position:fixed;
+  top:0;
+  width:100%;
+  height:var(--header-height);
+  padding:20px 36px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(10,11,14,.75);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border-soft);
+  z-index:1000;
+}
+
+.logo{
+  font-size:1.5rem;
+  font-weight:700;
+  letter-spacing:4px;
+  color:var(--accent);
+}
+
+/* MENU */
+.menu-toggle{
+  background:none;
+  border:none;
+  cursor:pointer;
+  width:42px;
+  height:42px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:6px;
+}
+
+.menu-toggle .dot{
+  width:6px;
+  height:6px;
+  background:var(--accent);
+  border-radius:50%;
+  margin:0 auto;
+}
+
+.menu{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(180deg,rgba(8,9,12,.97),rgba(5,6,8,.98));
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  transform:translateY(-110vh);
+  transition:.6s;
+  z-index:999;
+}
+
+.menu.active{transform:translateY(0)}
+
+.menu-close{
+  position:fixed;
+  top:28px;
+  right:36px;
+  background:none;
+  border:none;
+  font-size:34px;
+  color:var(--accent);
+  cursor:pointer;
+}
+
+.menu ul{list-style:none;text-align:center}
+.menu ul li{margin:26px 0}
+
+.menu ul li a{
+  font-size:1.4rem;
+  letter-spacing:2px;
+  color:#e5e5e5;
+}
+
+body.menu-open{overflow:hidden}
+
+/* PRODUCTO */
+.product-section{
+  padding:120px 32px;
+  max-width:1200px;
+  margin:auto;
+}
+
+.product-info h1{
+  font-size:2.4rem;
+  margin-bottom:16px;
+}
+
+.product-description{
+  color:var(--text-muted);
+  margin-bottom:22px;
+}
+
+.product-details{
+  list-style:none;
+  margin-bottom:26px;
+}
+
+.product-details li{
+  margin-bottom:8px;
+  color:var(--text-muted);
+}
+
+.pack-title{
+  font-size:.9rem;
+  margin-bottom:12px;
+  color:var(--text-muted);
+}
+
+.pack-options{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(90px,1fr));
+  gap:12px;
+  margin-bottom:28px;
+}
+
+.pack{
+  padding:14px 10px;
+  border:1px solid var(--border-soft);
+  border-radius:12px;
+  text-align:center;
+  cursor:pointer;
+  transition:.3s;
+  font-size:.9rem;
+}
+
+.pack:hover{
+  border-color:var(--accent);
+}
+
+.pack.active{
+  background:var(--accent-soft);
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+.product-price span{
+  font-size:.8rem;
+  color:var(--text-muted);
+}
+
+.product-price h2{
+  font-size:2rem;
+  color:var(--accent);
+  margin:6px 0 26px;
+}
+
+
+/* PACKS */
+.pack-title{
+  font-size:.9rem;
+  margin-bottom:12px;
+  color:var(--text-muted);
+}
+
+.pack-options{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(90px,1fr));
+  gap:12px;
+  margin-bottom:28px;
+}
+
+.pack{
+  padding:14px 10px;
+  border:1px solid var(--border-soft);
+  border-radius:12px;
+  text-align:center;
+  cursor:pointer;
+  transition:.3s;
+  font-size:.9rem;
+}
+
+.pack:hover{
+  border-color:var(--accent);
+}
+
+.pack.active{
+  background:var(--accent-soft);
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* PRECIO */
+.product-price span{
+  font-size:.8rem;
+  color:var(--text-muted);
+}
+
+.product-price h2{
+  font-size:2rem;
+  color:var(--accent);
+  margin:6px 0 26px;
+}
+
+.btn-primary{
+  display:inline-block;
+  padding:14px 32px;
+  background:linear-gradient(135deg,#e0b76a,#cfa85f);
+  color:#000;
+  font-weight:600;
+  border-radius:999px;
+}
+
+/* FOOTER */
+footer{
+  background:#07080b;
+  border-top:1px solid var(--border-soft);
+  padding:60px 32px;
+  text-align:center;
+}
+
+footer p{
+  color:var(--text-muted);
+}
+
+/* GALERÍA */
+.product-gallery{
+  display:flex;
+  gap:24px;
+  overflow-x:auto;
+  padding:12px 0;
+}
+
+/* MINIATURAS GRANDES */
+.product-gallery img{
+  width:78vw;            /* ← CLAVE: ocupan casi toda la pantalla */
+  max-width:520px;
+  height:auto;
+  border-radius:18px;
+  flex-shrink:0;
+  cursor:zoom-in;
+}
+
+/* MODAL */
+.image-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.9);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+
+.image-modal.active{
+  display:flex;
+}
+
+/* IMAGEN AMPLIADA */
+#modalImg{
+  width:80vw;     /* ← 80% REAL */
+  height:auto;
+  max-height:80vh;
+  border-radius:20px;
+}
+
+/* BOTÓN CERRAR */
+.close-modal{
+  position:absolute;
+  top:20px;
+  right:24px;
+  font-size:42px;
+  background:none;
+  border:none;
+  color:#cfa85f;
+  cursor:pointer;
+  z-index:10000;
+}
+.overlay-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  background: none;
+  border: none;
+  font-size: 42px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 6000; /* CLAVE */
+}
+@keyframes zoomIn{
+  from{
+    transform:scale(.9);
+    opacity:0;
+  }
+  to{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="logo">LUMEN</div>
+  <button class="menu-toggle">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  </button>
+</header>
+
+<nav class="menu">
+  <button class="menu-close">&times;</button>
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="index.html#pasos">¿Cómo comprar?</a></li>
+  </ul>
+</nav>
+
+<section class="product-section">
+  <div class="product-container">
+<div class="product-gallery">
+  <img src="d:\Users\Admin\Videos\Captures\Apliques LED pequeños - Google Chrome 12_1_2026 13_55_47.png" class="zoom-img" alt="Aplique LUMEN">
+  <img src="d:\Users\Admin\Videos\Captures\Apliques LED pequeños - Google Chrome 12_1_2026 13_55_47.png" class="zoom-img" alt="Aplique LUMEN">
+  <img src="d:\Users\Admin\Videos\Captures\Apliques LED pequeños - Google Chrome 12_1_2026 13_55_47.png" class="zoom-img" alt="Aplique LUMEN">
+</div>
+
+<div class="image-modal" id="imageModal">
+  <button class="close-modal" id="closeModal">&times;</button>
+
+  <img id="modalImg">
+</div>
+
+    <div class="product-info">
+      <h1>Aplique bidireccional LUMEN</h1>
+
+      <p class="product-description">
+        Luminaria exterior fabricada en aluminio, con diseño minimalista
+        y terminaciones profesionales.
+      </p>
+
+      <ul class="product-details">
+        <li>• Aluminio premium</li>
+        <li>• Uso exterior</li>
+        <li>• Luz bidireccional</li>
+      </ul>
+
+      <p class="pack-title">Elegí tu pack</p>
+
+      <div class="pack-options">
+        <div class="pack active" data-price="10500">Pack x1</div>
+        <div class="pack" data-price="40000">Pack x4</div>
+        <div class="pack" data-price="60000">Pack x6</div>
+        <div class="pack" data-price="75500">Pack x8</div>
+        <div class="pack" data-price="95000">Pack x10</div>
+        <div class="pack" data-price="115000">Pack x12</div>
+      </div>
+
+      <div class="product-price">
+        <span>Precio</span>
+        <h2 id="productPrice">$10.500 ARS</h2>
+      </div>
+
+      <button class="btn-primary" onclick="goToBuy()">
+  Comprar
+</button>
+
+
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 LUMEN. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+const menuToggle=document.querySelector('.menu-toggle');
+const menu=document.querySelector('.menu');
+const menuClose=document.querySelector('.menu-close');
+
+menuToggle.onclick=()=>{menu.classList.toggle('active');document.body.classList.toggle('menu-open')}
+menuClose.onclick=()=>{menu.classList.remove('active');document.body.classList.remove('menu-open')}
+
+document.querySelectorAll('.pack').forEach(pack=>{
+  pack.onclick=()=>{
+    document.querySelectorAll('.pack').forEach(p=>p.classList.remove('active'));
+    pack.classList.add('active');
+  }
+});
+const packs = document.querySelectorAll('.pack');
+const price = document.getElementById('productPrice');
+
+packs.forEach(pack => {
+  pack.addEventListener('click', () => {
+    packs.forEach(p => p.classList.remove('active'));
+    pack.classList.add('active');
+
+    const value = Number(pack.dataset.price);
+    price.textContent = '$' + value.toLocaleString('es-AR') + ' ARS';
+  });
+});
+
+
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImg");
+  const closeModal = document.getElementById("closeModal");
+
+  document.querySelectorAll(".zoom-img").forEach(img => {
+    img.addEventListener("click", () => {
+      modal.classList.add("active");
+      modalImg.src = img.src;
+    });
+  });
+
+  // ✅ cerrar SOLO con la X
+  closeModal.addEventListener("click", (e) => {
+    e.stopPropagation();
+    modal.classList.remove("active");
+  });
+
+function goToBuy() {
+  const activePack = document.querySelector('.pack.active');
+
+  if (!activePack) {
+    alert('Seleccioná un pack');
+    return;
+  }
+
+  localStorage.setItem('lumen_pack', activePack.textContent);
+  localStorage.setItem('lumen_price', activePack.dataset.price);
+
+  window.location.href = 'comprar.html';
+}
+
+
+</script>
+
+
+</body>
+</html>
